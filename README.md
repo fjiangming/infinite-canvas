@@ -142,6 +142,8 @@ bun run dev
 
 ### Docker 运行
 
+本 fork 的镜像为 `ghcr.io/fjiangming/infinite-canvas:latest`，推送 `main` 后自动构建 amd64 / arm64 镜像。作为 Sub2API Extra 子服务部署及统一更新，见 [部署说明](docs/sub2api-extra-deployment.md)。
+
 ```bash
 git clone git@github.com:basketikun/infinite-canvas.git
 cd infinite-canvas
