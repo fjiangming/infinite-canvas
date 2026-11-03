@@ -21,3 +21,7 @@ docker compose --env-file compose.services.env up -d --no-build --no-deps infini
 ```
 
 The production page is served at `https://canvas.fo2.us.ci/canvas` through the existing Nginx and Cloudflare ingress. The canvas Nginx site clears Sub2API login query parameters before serving the application and can forward the user's API requests to the fixed Sub2API gateway. This is a static browser workspace, without Sub2API SSO or account-based data storage. Each user configures their own Sub2API API key and available models. Canvas data and keys remain in that user's browser; optional WebDAV sync retains upstream behavior.
+
+The same image also supports `https://aihub.fo2.us.ci/canvas/`: strip the `/canvas/` prefix when proxying and replace the HTML `<base data-canvas-base href="/"` prefix with `<base data-canvas-base href="/canvas/"`. Disable upstream compression for that HTML substitution. Scripts, styles, router navigation and local-plugin paths then follow the mount without occupying the main site's root asset paths. The mount root opens the canvas library. Use `https://aihub.fo2.us.ci` as the model gateway URL; the `/canvas/` prefix is only for the interface. Keep credentials out of the menu URL and remove automatically appended login parameters before proxying. Detailed Nginx configuration belongs to Sub2API Extra.
+
+The independent domain keeps using its root base. Browser data is scoped by origin, so existing work from the independent canvas domain must be exported and imported to appear on the main domain.
