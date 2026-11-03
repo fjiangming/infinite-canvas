@@ -6,6 +6,7 @@ The user requested a same-origin `aihub.fo2.us.ci/canvas` entry in the existing 
 
 - `web/index.html` and `web/vite.config.ts`: add a stable HTML base element, relative public references and relative build assets. The reverse proxy replaces only the base element to mount the same image below `/canvas/`; root-domain HTML retains `/`.
 - `web/src/constant/env.ts`, `web/src/router.tsx`, `web/src/components/layout/app-top-nav.tsx`, `web/src/lib/canvas/plugin-loader.ts`: derive the router basename, logo and local-plugin URLs from the document base. The mount root opens the canvas library; the standalone root retains its home page.
+- `web/src/components/agent/local-agent-panel.tsx`: remove Agent bootstrap fragments using the router-relative pathname and search, preventing a duplicate mount prefix during credential cleanup.
 - `CHANGELOG.md`, `docs/content/docs/progress/pending-test.mdx` and `docs/sub2api-extra-deployment.md`: record subdirectory support, the Nginx integration and acceptance checks. Existing TODO items were reviewed and retained.
 
 No model gateway or personal key changes. Browser storage remains scoped by origin; data from the independent canvas domain does not automatically move to the main domain. Publication and deployment verification are recorded in Sub2API Extra's maintenance ledger.

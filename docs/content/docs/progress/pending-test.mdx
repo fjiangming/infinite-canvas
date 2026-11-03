@@ -7,7 +7,7 @@ description: Implemented changes that still need manual verification
 
 The current release needs manual verification in these areas:
 
-- Reverse-proxy subdirectory: open the `/canvas/` mount, create and reload a project, open provider configuration, and navigate between tools. HTML, scripts, CSS, logos and local-plugin discovery must remain inside the mount. The standalone root-domain deployment and its saved data must keep working. Model requests continue to use the configured gateway URL rather than the UI mount path.
+- Reverse-proxy subdirectory: open the `/canvas/` mount, create and reload a project, open provider configuration, and navigate between tools. HTML, scripts, CSS, logos and local-plugin discovery must remain inside the mount. Cleaning Agent URL bootstrap fragments must not duplicate the mount prefix. The standalone root-domain deployment and its saved data must keep working. Model requests continue to use the configured gateway URL rather than the UI mount path.
 
 - Default theme and header actions: with no saved theme preference, the first paint and all pages should use the light theme; switching themes and refreshing should restore the saved choice. The top-right actions on regular pages and the canvas should no longer show the version-update entry or GitHub link, and page load should not request the upstream version file.
 
